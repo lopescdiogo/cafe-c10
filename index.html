@@ -5,20 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Café C10</title>
 <meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Cache-Control" content="no-cache">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Café C10">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#3f6670">
-<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="apple-touch-icon" href="icon-180.png?v=11">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<link rel="manifest" href="manifest.webmanifest">
+<link rel="manifest" href="manifest.webmanifest?v=11">
 <style>
-html,body{margin:0;height:100%;background:#3f6670}
-iframe{position:fixed;inset:0;width:100%;height:100%;border:0;padding-top:env(safe-area-inset-top);box-sizing:border-box;background:#3f6670}
+html,body{margin:0;height:100%;overflow:hidden;background:#FFFFFF}
+iframe{position:fixed;top:0;left:0;width:100%;height:100vh;height:100dvh;border:0;padding-top:env(safe-area-inset-top);box-sizing:border-box;background:#FFFFFF}
 </style>
 </head>
 <body>
-<iframe src="https://script.google.com/macros/s/AKfycbzJTA2oP-VqREkVAisV2xH0s0bv1u7RhfetwVVN2dtLybWcIjSsFZNTWEudOJtD_a8iDQ/exec" title="Café C10" allow="clipboard-write"></iframe>
+<iframe id="app" title="Café C10" allow="clipboard-write"></iframe>
+<script>
+var APP='https://script.google.com/macros/s/AKfycbzJTA2oP-VqREkVAisV2xH0s0bv1u7RhfetwVVN2dtLybWcIjSsFZNTWEudOJtD_a8iDQ/exec';
+var f=document.getElementById('app');
+function fit(){f.style.height=window.innerHeight+'px';}
+fit();addEventListener('resize',fit);addEventListener('orientationchange',function(){setTimeout(fit,300);});
+f.src=APP+'?t='+Date.now();
+// ao voltar pro app depois de um tempo, recarrega a versao mais nova
+var hid=0;document.addEventListener('visibilitychange',function(){if(document.hidden){hid=Date.now();}else if(hid&&Date.now()-hid>10*60*1000){f.src=APP+'?t='+Date.now();}});
+</script>
 </body>
 </html>
