@@ -28,8 +28,9 @@ var f=document.getElementById('app');
 function fit(){f.style.height=window.innerHeight+'px';}
 fit();addEventListener('resize',fit);addEventListener('orientationchange',function(){setTimeout(fit,300);});
 f.src=APP+'?t='+Date.now();
-// ao voltar pro app depois de um tempo, recarrega a versao mais nova
-var hid=0;document.addEventListener('visibilitychange',function(){if(document.hidden){hid=Date.now();}else if(hid&&Date.now()-hid>10*60*1000){f.src=APP+'?t='+Date.now();}});
+// ao voltar pro app (30 s fora ou mais), recarrega a versao mais nova
+var hid=0;document.addEventListener('visibilitychange',function(){if(document.hidden){hid=Date.now();}else if(hid&&Date.now()-hid>30*1000){f.src=APP+'?t='+Date.now();}});
+addEventListener('pageshow',function(e){if(e.persisted){f.src=APP+'?t='+Date.now();}});
 </script>
 </body>
 </html>
